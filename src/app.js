@@ -5,17 +5,27 @@ import "./style.css";
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
-function domainGenerator() {
-  let pronoun = ["the", "our", "his"];
-  let adj = ["great", "big", "last"];
-  let noun = ["jogger", "racoon", "samurai"];
+const pronouns = ["the", "our"];
+const adjectives = ["great", "big"];
+const nouns = ["jogger", "racoon"];
 
-  for (let i = 0; i < pronoun.length; i++) {
-    for (let j = 0; j < adj.length; j++) {
-      for (let k = 0; k < noun.length; k++) {
-        let domain = pronoun[i] + adj[j] + noun[k] + ".com";
-        console.log(domain);
+function generateDomainNames() {
+  const domainNames = [];
+
+  for (let i = 0; i < pronouns.length; i++) {
+    for (let j = 0; j < adjectives.length; j++) {
+      for (let k = 0; k < nouns.length; k++) {
+        const domainName = `${pronouns[i]}${adjectives[j]}${nouns[k]}.com`;
+        domainNames.push(domainName);
       }
     }
   }
+  document.getElementById("domainNamesList").innerHTML = domainNames.join(
+    "<br>"
+  );
+  return domainNames;
 }
+
+window.onload = function() {
+  generateDomainNames();
+};
